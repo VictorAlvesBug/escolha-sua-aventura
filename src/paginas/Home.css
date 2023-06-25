@@ -1,0 +1,55 @@
+
+
+header.botoes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.botao {
+  color: var(--cor-texto-elemento);
+  background-color: var(--cor-fundo-elemento);
+  border: 2px solid var(--cor-contorno-elemento);
+  padding: 5px 10px;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background-color: var(--cor-fundo-elemento-hover);
+}
+
+.lista-jogos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px 10px;
+}
+
+.item-jogo {
+  color: var(--cor-texto-elemento);
+  background-color: var(--cor-fundo-elemento);
+  border: 2px solid green;
+  height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration:none;
+}
+
+.item-jogo:hover {
+  background-color: var(--cor-fundo-elemento-hover);
+}
