@@ -34,7 +34,7 @@ header.botoes {
 .item-jogo {
   color: var(--cor-texto-elemento);
   background-color: var(--cor-fundo-elemento);
-  border: 2px solid green;
+  border: 2px solid var(--cor-contorno-elemento);
   height: 200px;
   padding: 10px;
   border-radius: 10px;
