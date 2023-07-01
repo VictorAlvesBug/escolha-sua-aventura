@@ -1,14 +1,13 @@
 
 
-header.botoes {
+.Home > header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .botao {
-  color: var(--cor-texto-elemento);
   background-color: var(--cor-fundo-elemento);
   border: 2px solid var(--cor-contorno-elemento);
   padding: 5px 10px;
@@ -32,10 +31,33 @@ header.botoes {
 }
 
 .item-jogo {
-  color: var(--cor-texto-elemento);
   background-color: var(--cor-fundo-elemento);
   border: 2px solid var(--cor-contorno-elemento);
   height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration:none;
+}
+
+.item-jogo .item-jogo-opcoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.item-jogo-opcao {
+  background-color: var(--cor-fundo-elemento);
+  border: 2px solid var(--cor-contorno-elemento);
   padding: 10px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -50,6 +72,8 @@ header.botoes {
   text-decoration:none;
 }
 
-.item-jogo:hover {
+.item-jogo-opcao:hover {
   background-color: var(--cor-fundo-elemento-hover);
 }
+
+

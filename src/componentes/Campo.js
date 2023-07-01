@@ -1,12 +1,16 @@
 import React, { useRef } from 'react';
 import './Campo.css';
 
-function Campo({ comportamento, children, ...outros }) {
+function Campo({ comportamento, editavel, children, onEdit, id, ...outros }) {
   const referenciaElemento = useRef(null);
+
+  if (editavel === undefined) {
+    editavel = true;
+  }
 
   const handleBlur = () => {
     const conteudoEditado = referenciaElemento.current.textContent;
-    console.log('Conteúdo editado: ', conteudoEditado);
+    onEdit(id, conteudoEditado);
   };
 
   switch (comportamento) {
@@ -14,7 +18,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-          contentEditable={true}
+          contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >
@@ -26,7 +30,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-          contentEditable={true}
+          contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >
@@ -38,7 +42,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-          contentEditable={true}
+          contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >
@@ -50,7 +54,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-          contentEditable={true}
+          contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >
@@ -62,7 +66,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-          contentEditable={true}
+          contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >
@@ -74,7 +78,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-          contentEditable={true}
+          contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >
@@ -86,7 +90,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-          contentEditable={true}
+          contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >
@@ -98,7 +102,7 @@ function Campo({ comportamento, children, ...outros }) {
       return (
         <div
           ref={referenciaElemento}
-        //   contentEditable={true}
+          //   contentEditable={editavel}
           onBlur={handleBlur}
           {...outros}
         >

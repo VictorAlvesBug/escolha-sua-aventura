@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './NovoJogo.css';
+//import './NovoJogo.css';
 import Campo from '../componentes/Campo';
 import { aleatorio, aleatorioInteiro, novoGuid } from '../utils.js';
 
@@ -7,20 +7,17 @@ function NovoJogo() {
   const [listaOpcoes, setListaOpcoes] = useState([]);
 
   const novaOpcao = {
-    id: 0,
+    id: '',
     titulo: 'Nova opção...',
   };
 
   function adicionarNovaOpcao(){
-    console.log(aleatorioInteiro(1000));
-
     setListaOpcoes(prev => {
       return [...prev, {
-        id: 9,
-        titulo: `Opção ${aleatorioInteiro(1000)}`
+        id: novoGuid(),
+        titulo: `Opção #${aleatorioInteiro(1000)}`
       }];
     })
-    
   }
 
   return (
@@ -28,17 +25,22 @@ function NovoJogo() {
       <article>
         <header>
           <Campo comportamento="h1" className="titulo">
-            Título
+            Jogo #{aleatorioInteiro(1000)}
           </Campo>
         </header>
         <main>
           <div className="lista-opcoes">
             {[...listaOpcoes, novaOpcao].map((opcao) => {
-              if(opcao.id === 0){
-                return <button key={opcao.id} onClick={adicionarNovaOpcao}>Adicionar</button>
+              if(opcao.id === ''){
+                return <button key={opcao.id} onClick={adicionarNovaOpcao} className="botao">Adicionar opção</button>
               }
 
-              return <Campo key={opcao.id} comportamento="h3" className="opcao">{opcao.titulo}</Campo>;
+              return (
+                <div className="opcao">
+                  <Campo key={opcao.id} comportamento="h3">{opcao.titulo}</Campo>
+                  <button className="botao">Selecionar</button>
+                </div>
+              );
             })}
           </div>
         </main>

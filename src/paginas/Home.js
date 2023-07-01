@@ -7,53 +7,72 @@ import {
 } from 'react-router-dom';
 import '../shared.css';
 import './Home.css';
+import jogos, { atualizarJogo } from '../banco-dados.js';
+import { novoGuid } from '../utils.js';
+import Campo from '../componentes/Campo';
 
 function Home() {
-  const listaJogosFake = [
-    {
-      id: 'abcde',
-      nome: 'Meu Primeiro Jogo',
-      eventoClick: () => {
-        console.log('1');
-      },
-    },
-    {
-      id: 'fghij',
-      nome: 'Joguinho super difícil',
-      eventoClick: () => {
-        console.log('2');
-      },
-    },
-    {
-      id: 'jlkmn',
-      nome: 'Esse aqui é meu preferido',
-      eventoClick: () => {
-        console.log('3');
-      },
-    },
-  ];
 
-  const novoJogo = {
-    id: 'novo-jogo',
-    nome: 'Novo Jogo',
-    eventoClick: () => {
-      console.log('Você criou um jogo!');
-    },
-  };
+const salvarNomeJogo = (id, nomeJogo) => {
+  console.log(id, nomeJogo)
+  jogos.forEach(jogo => {
+    if(jogo.id === id){
+      jogo.nome = nomeJogo;
+    }
+
+    atualizarJogo(id, jogo);
+    //return jogo;
+  });
+};
 
   return (
     <div className="Home">
-      <header className="botoes">
-        <button className="botao botao-criar js-btn-criar">
-          Criar novo Jogo
-        </button>
+      <header>
+        <h2>Meus Jogos</h2>
       </header>
       <main className="lista-jogos">
-        {[...listaJogosFake, novoJogo].map((jogo) => {
+        {[...jogos, null].map((jogo) => {
+          if (!jogo) {
+            const idNovoJogo = novoGuid();
+
+            return (
+              <NavLink
+                key={`${idNovoJogo}-novo`}
+                to={`/jogo/${idNovoJogo}?modo=editar`}
+                className="item-jogo-opcao"
+              >
+                Novo Jogo
+              </NavLink>
+            );
+          }
+
           return (
-            <NavLink key={jogo.id} to={`/jogo/${jogo.id}`} className="item-jogo">
-              <span>{jogo.nome}</span>
-            </NavLink>
+            <div className="item-jogo">
+              <Campo
+                comportamento="h3"
+                editavel={true}
+                id={jogo.id}
+                onEdit={salvarNomeJogo}
+              >
+                {jogo.nome}
+              </Campo>
+              <div className="item-jogo-opcoes">
+                <NavLink
+                  key={`${jogo.id}-editar`}
+                  to={`/jogo/${jogo.id}?modo=editar`}
+                  className="item-jogo-opcao"
+                >
+                  Editar
+                </NavLink>
+                <NavLink
+                  key={`${jogo.id}-jogar`}
+                  to={`/jogo/${jogo.id}?modo=jogar`}
+                  className="item-jogo-opcao"
+                >
+                  Jogar
+                </NavLink>
+              </div>
+            </div>
           );
         })}
       </main>

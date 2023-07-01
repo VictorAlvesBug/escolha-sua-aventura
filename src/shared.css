@@ -5,3 +5,31 @@
   --cor-contorno-elemento: #222;
   --cor-texto-elemento: #ccc;
 }
+
+* {
+  color: var(--cor-texto-elemento);
+}
+
+
+.botao-opcao {
+  border: 2px solid var(--cor-contorno-elemento);
+  background-color: var(--cor-fundo-elemento);
+  width: 100%;
+  padding: 10px 20px;
+  color: red;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.botao-opcao:hover {
+  background-color: var(--cor-fundo-elemento-hover);
+}
